@@ -56,36 +56,6 @@ package Entities
 				];
 			}
 
-			/*
-			if (angle != 0)
-			{
-				//have to find the 4 corners of the collision box, and we'll subtract the rotate point so that the points will rotate around that instead of the top left/ origin
-				var points:Array = [
-					new Point(0-rotate_offset.x, 0-rotate_offset.y),
-					new Point(width-rotate_offset.x, 0-rotate_offset.y),
-					new Point(width-rotate_offset.x, height-rotate_offset.y),
-					new Point(0-rotate_offset.x, height-rotate_offset.y)			
-				];
-				var points_trans:Array = new Array();
-				//using the formula: x' = x*cos(angle)-y*sin(angle); y' = x*sin(angle)+y*cos(angle)  from: http://en.wikipedia.org/wiki/Rotation_(mathematics)
-				for (var i:int = 0; i < points.length;i++ )
-				{
-					var x_trans:Number = points[i].x * Math.cos(angle) - points[i].y * Math.sin(angle);
-					var y_trans:Number = points[i].x * Math.sin(angle) + points[i].y * Math.cos(angle);
-					//have to add back in the location of the ship, and add back in the rotational offset from having to take it away earlier
-					points_trans.push(new Point(x_trans+x+rotate_offset.x, y_trans+y+rotate_offset.y));
-				}
-				collis_points = points_trans;
-			}
-			else
-			{
-				collis_points = [
-					new Point(x, y),
-					new Point(x+width, y),
-					new Point(x+width, y+height),
-					new Point(x, y+height),					
-				];
-			}*/
 		}     
 		public function CheckIfInNonRotatedRect(obj2:GameSprite):Boolean
 		{
@@ -116,49 +86,6 @@ package Entities
 			
 			return intersecting;
 		}
-		/*public function CheckRectIntersect(obj2:GameSprite):Boolean
-		{
-			var answer:Boolean = false;
-			//http://stackoverflow.com/questions/115426/algorithm-to-detect-intersection-of-two-rectangles
-			//we'll check if the object is intersecting the current object using the seperating axis theorem
-			
-			//first we need to get the vectors of the points making up the object- and performing rotations to find where the points are			
-			//first step is we get all the edges by using the formula: edge = v(n) - v(n-1)
-			var edges1:Array = new Array();
-			for (var i:int = 0; i < collis_points.length; i++)
-			{
-				if(i!=collis_points.length-1)
-					edges1.push(new Point(collis_points[i + 1].x - collis_points[i].x, collis_points[i + 1].y - collis_points[i].y));
-				else
-					edges1.push(new Point(collis_points[0].x - collis_points[i].x, collis_points[0].y - collis_points[i].y));					
-			}
-			
-			
-			var edges2:Array = new Array();
-			for (var j:int = 0; j < obj2.collis_points.length; j++)
-			{
-				if(j!=obj2.collis_points.length-1)
-					edges1.push(new Point(obj2.collis_points[j + 1].x - obj2.collis_points[j].x, obj2.collis_points[j + 1].y - obj2.collis_points[j].y));
-				else
-					edges1.push(new Point(obj2.collis_points[0].x - obj2.collis_points[j].x, obj2.collis_points[0].y - obj2.collis_points[j].y));					
-			}
-			
-			//now we find the perpendicular of these edges using:
-			//rotated.x = -unrotated.y; rotated.y =  unrotated.x
-			var rotated1:Array = new Array();
-			for (var k:int; k < edges1.length; k++)
-				rotated1.push( -edges1[k].y, edges1[k].x);
-			
-			var rotated2:Array = new Array();
-			for (var m:int; m < edges2.length; m++)
-				rotated2.push( -edges2[m].y, edges2[m].x);
-				
-			//need to finish- now we need to do dot product to see what sign is on object	
 
-
-			
-			
-			return answer;
-		}*/
 	}
 }

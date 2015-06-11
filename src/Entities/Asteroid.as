@@ -12,20 +12,20 @@ package Entities
 	{
 		
 		public static const Directions:Array = [Math.PI / 4, 3 * Math.PI / 4, 5 * Math.PI / 4, 7 * Math.PI / 4];
-		public static const Sizes:Array = [40, 20, 15];
-		public static const Speeds:Array = [1, 2, 4];
+		public static const Sizes:Array = [200, 150, 110, 90, 70, 50];
+		public static const Speeds:Array = [1, 2, 3, 4, 5, 5];
 		public static const Types:Array = [0, 1];
-		public static const Scores:Array = [20, 50, 100];
+		public static const Scores:Array = [20, 50, 100, 150, 250, 375];
 		
 		private var type:int;
 		private var direction:Number;
 		private var speed:Point;
 		public var size:int;
 		
-		[Embed(source = '../resources/images/asteroid1.png')]
+		[Embed(source = '../resources/images/4.png')]
 		private var tex_asteroid1:Class;
 		
-		[Embed(source = '../resources/images/asteroid2.png')]
+		[Embed(source = '../resources/images/1.png')]
 		private var tex_asteroid2:Class;
 		
 		public function Asteroid(x:int, y:int, size:Number, direction:Number, type:int)
@@ -84,5 +84,5 @@ package Entities
 		}
 		
 	}
-
+	
 }

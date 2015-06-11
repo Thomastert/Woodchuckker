@@ -21,30 +21,23 @@ package Entities
 		
 		public var ship_death_time:Number;
 		
-		[Embed(source="../resources/images/henk.png")]
+		[Embed(source="../resources/images/Houthakker_Idle.png")]
 		private var tex_ship:Class;
 		
 		public function Ship(x:int, y:int, width:int, height:int)
 		{
 			super(x, y, width, height);
 			image_sprite = new Sprite();
-			//image_sprite.graphics.lineStyle(2, 0xFFFFFF);
 			rotate_amount = 15;
 			speed =  new Point(0, 0);
 			rotate_offset = new Point(width / 2, height / 2);
+
 			
 			var temp_bitmap:Bitmap = new tex_ship();
+			//tex_ship.width = 0.2;
+			//tex_ship.height = 0.2;
 			image_sprite.addChild(temp_bitmap);
-			
-			//create the ship drawing
-			/*image_sprite.graphics.moveTo(0, height);
-			image_sprite.graphics.lineTo(width / 2, 0);
-			image_sprite.graphics.lineTo(width, height);
-			
-			//draw the line across
-			image_sprite.graphics.moveTo((7*height/8 -height)/(-height/(width/2)), 7*height/8 );
-			image_sprite.graphics.lineTo((7 * height / 8 -height) / (height / (width / 2)) + width, 7 * height / 8);
-			*/
+
 			ship_death_time = 0;
 		}
 		override public function Render():void
@@ -79,7 +72,6 @@ package Entities
 			else if(y >= Game.Renderer.height)
 				y = 0;
 				
-			//now find the collision points
 			var x_top:int = 0 * Math.cos(angle) + rotate_offset.y * Math.sin(angle)+x+rotate_offset.x;
 			var y_top:int = 0 * Math.sin(angle) - rotate_offset.y * Math.cos(angle) + y + rotate_offset.y;
 			
@@ -110,7 +102,6 @@ package Entities
 		}
 		public function RotateLeft():void
 		{
-			//first convert angle in rads
 			var angle_deg:int = Math.round(angle * (180.0 / Math.PI));
 			angle_deg -= rotate_amount;
 			angle = angle_deg * (Math.PI / 180.0);
